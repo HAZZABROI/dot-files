@@ -1,0 +1,211 @@
+/////////////////////////////////////////////////////////////////
+//  _      __          __                            ____      //
+// | | /| / /__ ___ __/ /  ___ _____  _______  ___  / _(_)__ _ //
+// | |/ |/ / _ `/ // / _ \/ _ `/ __/ / __/ _ \/ _ \/ _/ / _ `/ //
+// |__/|__/\_,_/\_, /_.__/\_,_/_/    \__/\___/_//_/_//_/\_, /  //
+//             /___/                                   /___/   //
+/////////////////////////////////////////////////////////////////
+
+
+
+//Global panel settings.
+{
+	"layer": "top",
+	// "output": [],
+	"position": "bottom",
+	"max-height": 0,
+	"width": 1000,
+	// "margin": "",
+	//"margin-top": 0,
+	//"margin-bottom": 8,
+	//"margin-left": 10,
+	//"margin-right": 10,
+	"height": 63,
+	"spacing": 0,
+	"gtk-layer-shell": true,
+	//"border-radius": 16,
+
+
+
+
+"modules-left": [
+	"clock",
+	"custom/separator",
+	"hyprland/language",
+	"custom/separator",
+	"battery#bat2",
+	"battery",
+	],
+
+"modules-center": [
+	"tray",
+	],
+
+"modules-right": [
+	"pulseaudio#audio",
+	"custom/separator",
+	"temperature",
+	"custom/separator",
+	"custom/notif",
+	],
+
+"hyprland/language": {
+	"format": "{}",
+	"format-en": "US",
+	"format-ru": "RU",	    
+	},
+"custom/notif": {
+    	"format": "󱅫 ",
+    	"on-click": "swaync-client -t -sw"
+    },
+"clock": {
+	"interval": 1,
+	"timezone": "Europe/Moscow",
+	"format": "{:%H:%M | %e %b, %a}",
+	"on-click": "gnome-calendar",
+	"tooltip": false,
+	"tooltip-format": "{calendar}",
+	"calendar": {
+		"mode": "year",
+	"mode-mon-col": 3,
+	"format": {
+		"today": "<span color='#0dbc79'>{}</span>"
+		}
+	}
+	},
+
+	"hyprland/workspaces": {
+	"format": "{icon}",
+	"format-icons": {
+//	"1": "1",
+//      "2": "2",
+//      "3": "3",
+//      "4": "4",
+//      "5": "5",
+//      "6": "6",
+//      "7": "7",
+//      "8": "8", 
+//      "9": "9",
+	
+	"active":"󱓻",
+	"default":"󱓻",
+	"urgent":"󱓻"
+	},
+	"on-click": "activate",
+	"tooltip": false,
+	"persistent_workspaces": {
+		"*": 3
+		}
+	},
+
+"tray": {
+    "icon-size": 21,
+    "spacing": 10
+},
+
+"pulseaudio#audio": {
+	"format": "{icon} {volume}",
+	"format-bluetooth": "{icon} {volume}",
+	"format-bluetooth-muted": "muted",
+	"format-muted": "muted",
+	"format-icons": {
+	"default": [
+		"󰛞 󱢠 󱢠 󱢠 󱢠 ",
+		"󰣐 󱢠 󱢠 󱢠 󱢠 ",
+		"󰣐 󰛞 󱢠 󱢠 󱢠 ",
+		"󰣐 󰣐 󱢠 󱢠 󱢠 ",
+		"󰣐 󰣐 󰛞 󱢠 󱢠 ",
+		"󰣐 󰣐 󰣐 󱢠 󱢠 ",
+		"󰣐 󰣐 󰣐 󰛞 󱢠 ",
+		"󰣐 󰣐 󰣐 󰣐 󱢠 ",
+		"󰣐 󰣐 󰣐 󰣐 󰛞 ",
+		"󰣐 󰣐 󰣐 󰣐 󰣐 " 
+		]
+	},
+	"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+	"on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +1%",
+	"on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -1%",
+	"tooltip": false,
+	"tooltip-format": "{icon} {desc} {volume}%"
+	},
+
+"battery": {
+	"states": {
+		"warning": 30,
+		"critical": 10
+		},
+	"format": "{icon} {capacity} ",
+	"format-charging": " {capacity} ",
+	"format-plugged": "󰚥 {capacity} ",
+	"format-icons": [
+		"󰁺",
+		"󰁻",
+		"󰁼",
+		"󰁽",
+		"󰁾",
+		"󰁿",
+		"󰂀",
+		"󰂁",
+		"󰂂",
+		"󰁹"
+		],
+	"on-click": "",
+	"tooltip": false,
+	"bat": "BAT0",
+	"interval": 1
+	},
+
+"custom/btd": {
+	"format": "󰟎",
+	"tooltip": false,
+	"on-click": "bluetoothctl disconnect 1C:52:16:4F:FD:37"
+	},
+
+"custom/btc": {
+	"format": "󰋋 ",
+	"tooltip": false,
+	"on-click": "bluetoothctl connect 1C:52:16:4F:FD:37"
+	},
+
+"custom/separator": {
+	"format": " | ",
+	"tooltip": false,
+	"on-click": "wofi --show drun -I"
+	},
+
+"custom/logo": {
+	"format": "  ",
+	"tooltip": false,
+	"on-click": "wofi --show drun -I"
+	},
+
+"battery#bat2": {
+	"states": {
+		"warning": 30,
+		"critical": 15
+		},
+	"format": "{icon} {capacity}",
+	"format-charging": " {capacity}",
+	"format-plugged": "󰚥 {capacity}",
+	"format-icons": [
+		"󰁺",
+		"󰁻",
+		"󰁼",
+		"󰁽",
+		"󰁾",
+		"󰁿",
+		"󰂀",
+		"󰂁",
+		"󰂂",
+		"󰁹"
+		],
+	"on-click": "",
+	"tooltip": false,
+	"bat": "BAT1",
+	"interval": 1
+	},
+	
+"temperature": {
+	"format": "󰔏 {temperatureC}°C"
+	},
+},
